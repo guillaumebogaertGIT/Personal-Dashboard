@@ -23,12 +23,15 @@ public class UserInterface {
 
             if (command.equals("0")) {
                 break;
-            }
-
-            if (command.equals("1")) {
+            } else if (command.equals("1")) {
                 while (true) {
                     System.out.println("Enter a task name (back to return to menu):");
                     String taskName = scanner.nextLine();
+
+                    if (taskName.trim().isEmpty()) {
+                        System.out.println("Task name cannot be empty.");
+                        continue;
+                    }
 
                     if (taskName.equals("back")) {
                         break;
@@ -37,11 +40,9 @@ public class UserInterface {
                     Task task = new Task(taskName);
                     dashboard.addTask(task);
                 }
-            }
-            if (command.equals("2")) {
+            } else if (command.equals("2")) {
                 dashboard.printTasks();
-            }
-            if (command.equals("3")) {
+            } else if (command.equals("3")) {
                 dashboard.printTasks();
                 
                 System.out.println("Which task number do you want to complete?");
@@ -51,8 +52,7 @@ public class UserInterface {
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter a whole number.");
                 }
-            }
-            if (command.equals("4")) {
+            } else if (command.equals("4")) {
                 dashboard.printTasks();
                 System.out.println("Which task number do you want to remove?");
 
@@ -62,6 +62,8 @@ public class UserInterface {
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter a whole number.");
                 }
+            } else {
+                System.out.println("Unknown command.");
             }
         
         }

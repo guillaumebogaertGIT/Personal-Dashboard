@@ -13,6 +13,10 @@ public class Dashboard {
     }
 
     public void printTasks() {
+        if (this.tasks.isEmpty()) {
+            System.out.println("No tasks yet.");
+            return; 
+        }
         int counter = 1;
 
         for (Task task : this.tasks) {
