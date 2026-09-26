@@ -1,18 +1,13 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-
+        Scanner scanner = new Scanner(System.in);
         Dashboard dashboard = new Dashboard(); 
+        UserInterface userInterface = new UserInterface(dashboard, scanner);
+        userInterface.start();
 
-        Task walk = new Task("Go for walk");
-        dashboard.addTask(walk);
-        Task grocery = new Task("Buy Groceries");
-        dashboard.addTask(grocery);
-        dashboard.completeTask(2);
-        dashboard.completeTask(3);
-        dashboard.completeTask(0);
-        dashboard.removeTask(1);
-
-        dashboard.printTasks();
+       
         
 
         
