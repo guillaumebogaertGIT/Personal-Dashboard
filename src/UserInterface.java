@@ -23,7 +23,9 @@ public class UserInterface {
 
             if (command.equals("0")) {
                 break;
-            } else if (command.equals("1")) {
+            }
+
+            if (command.equals("1")) {
                 while (true) {
                     System.out.println("Enter a task name (back to return to menu):");
                     String taskName = scanner.nextLine();
@@ -37,14 +39,21 @@ public class UserInterface {
                         break;
                     }
 
-                    Task task = new Task(taskName);
+                    System.out.println("Priority (LOW/MEDIUM/HIGH):");
+                    String priority = scanner.nextLine();
+
+                    Task task = new Task(taskName, priority);
                     dashboard.addTask(task);
                 }
-            } else if (command.equals("2")) {
+            }
+
+            if (command.equals("2")) {
                 dashboard.printTasks();
-            } else if (command.equals("3")) {
+            }
+
+            if (command.equals("3")) {
                 dashboard.printTasks();
-                
+
                 System.out.println("Which task number do you want to complete?");
                 try {
                     int taskNumber = Integer.valueOf(scanner.nextLine());
@@ -52,7 +61,9 @@ public class UserInterface {
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter a whole number.");
                 }
-            } else if (command.equals("4")) {
+            }
+
+            if (command.equals("4")) {
                 dashboard.printTasks();
                 System.out.println("Which task number do you want to remove?");
 
@@ -62,11 +73,7 @@ public class UserInterface {
                 } catch (NumberFormatException e) {
                     System.out.println("Please enter a whole number.");
                 }
-            } else {
-                System.out.println("Unknown command.");
             }
-        
         }
-
     }
 }

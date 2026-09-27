@@ -8,26 +8,29 @@ public class Dashboard {
         this.tasks = new ArrayList<>();
     }
 
-    public void addTask (Task task) {
+    public void addTask(Task task) {
         this.tasks.add(task);
     }
 
     public void printTasks() {
         if (this.tasks.isEmpty()) {
             System.out.println("No tasks yet.");
-            return; 
+            return;
         }
+
         int counter = 1;
 
         for (Task task : this.tasks) {
 
             if (task.isCompleted()) {
-                System.out.println( counter + ". [x] " + task.getName());
-               
+                System.out.println(counter + ". [x] " + task.getName()
+                        + " - " + task.getPriority());
             } else {
-                System.out.println(counter + ". [ ] " + task.getName());
+                System.out.println(counter + ". [ ] " + task.getName()
+                        + " - " + task.getPriority());
             }
-            counter ++;
+
+            counter++;
         }
     }
 
@@ -36,18 +39,17 @@ public class Dashboard {
             System.out.println("Invalid task number");
             return;
         }
-        Task task = this.tasks.get(taskNumber-1);
+
+        Task task = this.tasks.get(taskNumber - 1);
         task.complete();
     }
 
     public void removeTask(int taskNumber) {
-       if (taskNumber < 1 || taskNumber > this.tasks.size()) {
+        if (taskNumber < 1 || taskNumber > this.tasks.size()) {
             System.out.println("Invalid task number");
             return;
         }
-        Task task = this.tasks.remove(taskNumber-1);
+
+        this.tasks.remove(taskNumber - 1);
     }
 }
-
-
-
